@@ -1,6 +1,5 @@
 package task4;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,15 +9,11 @@ public class Reader {
     public static void searchWord(String filePath, String searchWord) {
         try {
             int count = 0;
-            String fileContentWithoutNewLine = "";
-            String[] x = Files.readString(Paths.get(filePath)).split("\n");
-            for (String word : x) {
-                fileContentWithoutNewLine += word + " ";
-            }
+            String fileContentWithoutNewLine = Files.readString(Paths.get(filePath)).replaceAll("\\n", " ");
+            String[] fileContent = fileContentWithoutNewLine.split(" ");
 
-            String[] fileContent1 = fileContentWithoutNewLine.split(" ");
-            for (int i = 0; i <= fileContent1.length - 1; i++) {
-                if (fileContent1[i].equals(searchWord)) {
+            for (int i = 0; i <= fileContent.length - 1; i++) {
+                if (fileContent[i].equals(searchWord)) {
                     count++;
                 }
             }
