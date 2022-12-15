@@ -1,9 +1,5 @@
 package task8;
 
-import java.time.DateTimeException;
-import java.util.Scanner;
-import java.util.zip.DataFormatException;
-
 public class PersonalNumber {
 
     public static String getSocialNumber(String number) {
