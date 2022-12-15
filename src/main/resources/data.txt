@@ -1,7 +1,7 @@
-Kurs
-Java
-Lekcja 6
-Pliki
-Wyjątki
-Pliki
-Koniec pliku
+kurs
+java
+lekcja 6
+pliki
+wyjątki
+pliki
+koniec pliku
