@@ -5,7 +5,8 @@ public class Element {
     public static double getElement(double value) {
         if (value < 0) {
             throw new IllegalArgumentException();
-        } else
+        } else {
             return Math.sqrt(value);
+        }
     }
 }
