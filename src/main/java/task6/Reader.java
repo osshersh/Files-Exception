@@ -10,14 +10,17 @@ public class Reader {
     public static void main(String[] args) {
         File data = new File("C:\\Files-Exception\\src\\main\\resources\\data.txt");
         File output = new File("C:\\Files-Exception\\src\\main\\resources\\output.txt");
-
-        String fileContent = convertFileContentToUpperCase(data.getPath());
-        writeFile(output.getPath(), fileContent);
+        convertToUpperCase(data, output);
     }
 
-    public static String readFile(String filePath) {
+
+    public static void convertToUpperCase(File input, File output) {
+        writeFile(output.getPath(), readFile(input.getPath()).toUpperCase());
+    }
+
+    private static String readFile(String filePath) {
         if (filePath == null) {
-            throw new NullPointerException("Path can't null");
+            throw new IllegalArgumentException("Path can't be null");
         }
         try {
             return Files.readString(Paths.get(filePath));
@@ -32,9 +35,5 @@ public class Reader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static String convertFileContentToUpperCase(String filePath) {
-        return readFile(filePath).toUpperCase();
     }
 }
