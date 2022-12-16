@@ -2,7 +2,7 @@ package task8;
 
 public class PersonalNumber {
 
-    public static String getSocialNumber(String number) {
+    public static void validateSocialNumber(String number) {
         String regex = "\\d+";
 
         if (number == null || !number.matches(regex)) {
@@ -10,24 +10,18 @@ public class PersonalNumber {
         } else if (number.length() != 10) {
             throw new IllegalLengthException("Wrong length");
         }
-        return number;
+
     }
 
     private static class WrongTypeOfDataException extends IllegalArgumentException {
-        public WrongTypeOfDataException() {
-        }
-
-        public WrongTypeOfDataException(String s) {
-            super(s);
+        public WrongTypeOfDataException(String message) {
+            super(message);
         }
     }
 
-    private static class IllegalLengthException extends ArrayIndexOutOfBoundsException {
-        public IllegalLengthException() {
-        }
-
-        public IllegalLengthException(String s) {
-            super(s);
+    private static class IllegalLengthException extends RuntimeException {
+        public IllegalLengthException(String message) {
+            super(message);
         }
     }
 }
