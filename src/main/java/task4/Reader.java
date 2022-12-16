@@ -6,20 +6,30 @@ import java.nio.file.Paths;
 
 public class Reader {
 
-    public static void searchWord(String filePath, String searchWord) {
-        try {
-            int count = 0;
-            String fileContentWithoutNewLine = Files.readString(Paths.get(filePath)).replaceAll("\\n", " ");
-            String[] fileContent = fileContentWithoutNewLine.split(" ");
+    public static int getNumberRepeatOfWord(String filePath, String searchWord) {
+        return countWord(searchWord, getWordsFromFile(filePath));
+    }
 
-            for (int i = 0; i <= fileContent.length - 1; i++) {
-                if (fileContent[i].equals(searchWord)) {
-                    count++;
-                }
-            }
-            System.out.println(searchWord + " was found " + count + " times");
+    private static String[] getWordsFromFile(String filePath) {
+        String fileContentWithoutNewLine = filePath;
+        String[] fileContent = new String[fileContentWithoutNewLine.length()];
+
+        try {
+            fileContentWithoutNewLine = Files.readString(Paths.get(filePath)).replaceAll("\\n", " ");
+            return fileContent = fileContentWithoutNewLine.split(" ");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static int countWord(String searchWord, String[] array) {
+        int count = 0;
+
+        for (int i = 0; i <= array.length - 1; i++) {
+            if (array[i].equals(searchWord)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
