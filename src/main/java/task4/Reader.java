@@ -1,5 +1,6 @@
 package task4;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -11,12 +12,9 @@ public class Reader {
     }
 
     private static String[] getWordsFromFile(String filePath) {
-        String fileContentWithoutNewLine = filePath;
-        String[] fileContent = new String[fileContentWithoutNewLine.length()];
-
         try {
-            fileContentWithoutNewLine = Files.readString(Paths.get(filePath)).replaceAll("\\n", " ");
-            return fileContent = fileContentWithoutNewLine.split(" ");
+            String fileContentWithoutNewLine = Files.readString(Paths.get(filePath)).replaceAll("\\n", " ");
+            return fileContentWithoutNewLine.split(" ");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
